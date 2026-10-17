@@ -1,0 +1,8 @@
+[project]
+name = "emergent-aphid-workspacedecisons-backend"
+version = "0"
+description = "FastAPI backend scaffold for Emergent APHID Health Employees onboarding"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"

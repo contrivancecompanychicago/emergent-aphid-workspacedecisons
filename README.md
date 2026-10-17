@@ -1,51 +1,35 @@
-# ♿ CAOS API
+# Emergent APHID — Backend (version 0)
 
-{% swagger baseUrl="https://api.postmarkapp.com" path="/message-streams" method="post" summary="IMHOTEP Bizarros message-streams" %}
-{% swagger-description %}
+This repository has been converted from a static SwaggerHub-based API documentation site into a FastAPI backend scaffold for the Emergent APHID Health Employees onboarding project.
 
-{% endswagger-description %}
+Version: 0
 
-{% swagger-parameter in="path" name="MessageStreamType" type="string" %}
-Broadcasts Transactional
-{% endswagger-parameter %}
+Quickstart
 
-{% swagger-response status="200" description="" %}
+1. Create a Python virtual environment and install dependencies:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 ```
+
+2. Start the app (development):
+
+```bash
+uvicorn app.main:app --reload
 ```
-{% endswagger-response %}
-{% endswagger %}
 
-{% swagger baseUrl="https://api.caosreaxson.com" path="/v1/medicalobjects/:stream_id" method="get" summary="Get Sifidious message-streams" %}
-{% swagger-description %}
-This endpoint allows you to get medical objects.
-{% endswagger-description %}
+3. The OpenAPI docs will be available at http://127.0.0.1:8000/docs
 
-{% swagger-parameter in="path" name="stream_id" type="string" %}
-projectID of the medical object to get, for the health api.
-{% endswagger-parameter %}
+What I changed
 
-{% swagger-parameter in="header" name="Authentication" type="string" %}
-Authentication token to track down who can use the health api.
-{% endswagger-parameter %}
+- Removed SwaggerHub templating from README and index.html (the site previously contained embedded Swagger templates).
+- Added a FastAPI scaffold in `app/` with a simple onboarding model and CRUD endpoints.
+- Added SQLite default DB configuration (data/db.sqlite) and database helper.
+- Added tests, Dockerfile, and requirements.txt.
 
-{% swagger-parameter in="query" name="GoogleFit" type="array" %}
-The API will do its best to find a medical object matching the patient health information.
-{% endswagger-parameter %}
+Notes
 
-{% swagger-parameter in="query" name="Fitbit" type="array" %}
-Whether the Patient Walking    Speed should be high or low..
-{% endswagger-parameter %}
-
-{% swagger-response status="200" description="Medical Objects successfully retrieved." %}
-```
-{    "name": "Medical Objects",    "items": "grocery_list",    "food": "McData"}
-```
-{% endswagger-response %}
-
-{% swagger-response status="404" description="Could not find a cake matching this query." %}
-```
-{    "message": "Ain't no cake like that."}
-```
-{% endswagger-response %}
-{% endswagger %}
-
+- Database: by default the app uses SQLite for quick local development. For production, switch DATABASE_URL in the environment to a Postgres instance and update the engine URL accordingly.
+- If you want me to close or comment on the existing issues/PRs referencing Swagger/SwaggerHub, tell me and I will close them with a short note saying the integration was removed.
